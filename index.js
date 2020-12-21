@@ -1,11 +1,12 @@
 const { getFunctions } = require('./src/js/getFunctions');
 
+const getHello = getFunctions('hello_world.wasm', ['hello_world']);
 const getMath = getFunctions('math.wasm', ['add', 'multiply']);
 
 (async () => {
-  const { add, multiply } = await getMath();
+  const { hello_world } = await getHello();
 
-  console.log({ add: add(2, 3), multiply: multiply(3, 5) });
+  if (hello_world) hello_world(42);
 })();
 
 
